@@ -102,6 +102,30 @@ function updateDOM() {
   updateSavedColumns();
 }
 
+// ADD TO COLUMN LIST, RESET TEXTBOX
+function addToColumn(column) {
+  const itemText = addItems[column].textContent;
+  const selectedArray = listArrays[column];
+  selectedArray.push(itemText);
+  addItems[column].textContent = "";
+  updateDOM();
+}
+
+// SHOW ADD ITEM INPUT BOX
+function showInputBox(column) {
+  addBtns[column].style.visibility = "hidden";
+  saveItemBtns[column].style.display = "flex";
+  addItemContainers[column].style.display = "flex";
+}
+
+// HIDE ITEM INPUT BOX
+function hideInputBox(column) {
+  addBtns[column].style.visibility = "visible";
+  saveItemBtns[column].style.display = "none";
+  addItemContainers[column].style.display = "none";
+  addToColumn(column);
+}
+
 // ALLOW ARRAYS TO REFLECT DRAG AND DROP ITEMS
 function rebuildArrays() {
   backlogListArray = [];
